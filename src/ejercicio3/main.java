@@ -51,13 +51,18 @@ public class main {
 		
 		return salida;
 	}
+	//Ejercicio 6
 	public MySimpleLinkedList fusionListDiferentes(MySimpleLinkedList m1, MySimpleLinkedList m2) {
 		MySimpleLinkedList salida = new MySimpleLinkedList();
 		Iterator i = m1.iterator();
+		Integer value = null;
 		
 		while(i.hasNext()) {
-			if(!m2.contiene(i.next()))
-				salida.insertFront(i.next());
+			value = (Integer)i.next();
+			
+			if(!m2.contiene(value))
+				
+				salida.insertFront(value);
 		}
 			
 		
