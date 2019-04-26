@@ -7,10 +7,13 @@ public class ArbolBinario {
 	private Node root;
 
 	public ArbolBinario() {
-		this.root = new Node();
+		
 	}
 
 	public Integer getRoot() {
+		if(this.isEmpty())
+			return null;
+		
 		return this.root.getInfo();
 	}
 
@@ -74,10 +77,11 @@ public class ArbolBinario {
 	public void insert(Integer value) {
 		  if (this.isEmpty()) {
 	           this.newArbolBinario(value);
+	           return;
 	        }
 		  
 	        else {
-
+	        		
 	    		if (this.root.getInfo().compareTo(value) == -1) {
 	    			this.root.getIzq().insert(value);
 	    		} else {
@@ -104,17 +108,23 @@ public class ArbolBinario {
 
 	public List<Integer> getFrontera() {
 		List<Integer> salida = new ArrayList<>();
-		if(this.isSheet())
+		if(this.isSheet()) {
 			salida.add(this.root.getInfo());
-		
-		salida.addAll(this.root.getIzq().getFrontera());
-		
-		salida.addAll(this.root.getDer().getFrontera());
-		
+		}else {
+			
+			if(!this.isEmpty())	{
+				salida.addAll(this.root.getDer().getFrontera());
+			
+				salida.addAll(this.root.getIzq().getFrontera());
+			}
+		}
 		return salida;
 	}
 	
 	private boolean isSheet() {
+		if(this.isEmpty()) {
+			return false;
+		}
 		return (this.root.getIzq().isEmpty() && this.root.getDer().isEmpty());
 	}
 
@@ -126,6 +136,7 @@ public class ArbolBinario {
 		return null;
 	}
 }
+
 
 
 
